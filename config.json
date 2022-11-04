@@ -1,0 +1,41 @@
+{
+    "formatVersion": 1,
+    "menu": {
+        "global": {
+            "label": "Config.Global",
+            "formFields": {
+                "global.shippingProfiles": {
+                    "type": "inputText",
+                    "label": "Config.GlobalShippingProfiles",
+                    "options": {
+                        "defaultValue": ""
+                    }
+                },
+                "global.surcharge": {
+                    "type": "inputDouble",
+                    "required": true,
+                    "label": "Config.GlobalSurcharge",
+                    "options": {
+                        "defaultValue": "20.00"
+                    }
+                },
+                "global.leadDays": {
+                    "type": "inputText",
+                    "required": true,
+                    "label": "Config.GlobalLeadDays",
+                    "options": {
+                        "defaultValue": "2"
+                    }
+                },
+                "global.numberOfChoices": {
+                    "type": "inputText",
+                    "required": true,
+                    "label": "Config.GlobalNumberOfChoices",
+                    "options": {
+                        "defaultValue": "7"
+                    }
+                }
+            }
+        }
+    }
+}

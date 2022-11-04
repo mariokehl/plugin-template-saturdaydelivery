@@ -1,0 +1,39 @@
+<div id="saturday-delivery--wrap"
+    {% if hidden %} style="display: none;"{% endif %}>
+    <header>
+        <h4>Samstagszustellung</h4>
+    </header>
+    <div id="saturday-delivery--datepicker" class="mb-3">
+        <div class="d-flex justify-content-between saturday-delivery--radio-toolbar">
+            {% for possibleDate in possibleDates %}
+            <input
+                id="saturday-{{ loop.index }}"
+                type="radio"
+                name="selectedSaturday"
+                value="{{ possibleDate.value }}"
+                onclick="saturdayDelivery.selectSaturdayDelivery()"
+                {{ (sessionValue.selectedDate==possibleDate.value) ? 'checked' : '' }}>
+            <label for="saturday-{{ loop.index }}">{{ possibleDate.label }}</label>
+            {% endfor %}
+        </div>
+        <div class="form-check">
+            <input
+                id="saturdayDeliveryCheckboxId"
+                type="checkbox"
+                name="saturdayDeliveryCheckbox"
+                class="form-check-input"
+                onclick="saturdayDelivery.onClickSaturdayDeliveryCheckbox()"
+                {{ sessionValue.additionalFee ? 'checked' : '' }}>
+            <label class="form-check-label small" for="saturdayDeliveryCheckboxId">
+                Ich möchte die Ware am ausgewählten Datum erhalten und bin mit dem Zuschlag i.H.v. {{ surcharge }}
+                einverstanden.
+            </label>
+        </div>
+    </div>
+</div>
+
+<script id="saturday-delivery--config" type="application/json">
+    {
+        "shippingProfiles": {{ shippingProfiles | raw }}
+    }
+</script>

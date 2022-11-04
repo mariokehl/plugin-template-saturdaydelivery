@@ -1,0 +1,14 @@
+{
+  "@plentymarkets/generator-plugin": {
+    "promptValues": {
+      "type": "template"
+    },
+    "answers": {
+      "name": "SaturdayDelivery",
+      "author": "Mario Kehl",
+      "type": "integration",
+      "description": "This plugin provides a container in the checkout for selecting a date for saturday delivery including a surcharge",
+      "version": "0.0.1"
+    }
+  }
+}

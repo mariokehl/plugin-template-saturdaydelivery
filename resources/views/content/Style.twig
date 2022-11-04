@@ -1,0 +1,6 @@
+{% set minSuffix = '.min' %}
+{% if ceresConfig.log.performanceLevel  == 'development' %}
+    {% set minSuffix = '' %}
+{% endif %}
+
+<link rel="stylesheet" href="{{ plugin_path('SaturdayDelivery') }}/css/style{{ minSuffix }}.css">

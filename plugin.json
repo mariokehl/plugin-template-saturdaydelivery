@@ -1,0 +1,28 @@
+{
+    "name": "SaturdayDelivery",
+    "namespace": "SaturdayDelivery",
+    "type": "template",
+    "version": "0.0.1",
+    "pluginIcon": "icon_plugin_xs.png",
+    "description": "This plugin provides a container in the checkout for selecting a date for saturday delivery including a surcharge",
+    "author": "Mario Kehl",
+    "authorIcon": "icon_author_xs.png",
+    "serviceProvider": "SaturdayDelivery\\Providers\\SaturdayDeliveryServiceProvider",
+    "dataProviders": [
+        {
+            "key": "SaturdayDelivery\\Containers\\SaturdayDeliveryStyleContainer",
+            "name": "Saturday Delivery CSS",
+            "description": "",
+            "defaultLayoutContainer": "Ceres::Template.Style"
+        },
+        {
+            "key": "SaturdayDelivery\\Containers\\SaturdayDeliveryDatePickerContainer",
+            "name": "Display Date Picker for Saturday Delivery",
+            "description": "",
+            "defaultLayoutContainer": "Ceres::Checkout.AfterShippingProfileList"
+        }
+    ],
+    "runOnBuild": [
+        "SaturdayDelivery\\Migrations\\SaturydayDeliveryOrderPropertyMigration_0_0_1"
+    ]
+}
