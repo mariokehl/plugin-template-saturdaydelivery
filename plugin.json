@@ -1,12 +1,28 @@
 {
     "name": "SaturdayDelivery",
+    "marketplaceName": {
+        "de": "Termin-/Samstagszustellung buchen",
+        "en": "Book Saturday delivery"
+    },
+    "categories": [
+        "4082"
+    ],
     "namespace": "SaturdayDelivery",
-    "type": "template",
-    "version": "0.0.1",
-    "pluginIcon": "icon_plugin_xs.png",
+    "type": "integration",
+    "version": "1.0.0",
+    "price": 333.20,
     "description": "This plugin provides a container in the checkout for selecting a date for saturday delivery including a surcharge",
-    "author": "Mario Kehl",
-    "authorIcon": "icon_author_xs.png",
+    "shortDescription": {
+        "de": "Biete deinen Kund:innen die Möglichkeit der Wochenendzustellung (Sa) – rund um die Uhr",
+        "en": "Offer your customers the option of weekend delivery (Sat) - around the clock"
+    },
+    "require": {
+        "Ceres": "~5.0.54"
+    },
+    "platform": {
+        "php": ">=7.3 <8.1"
+    },
+    "isClosedSource": true,
     "serviceProvider": "SaturdayDelivery\\Providers\\SaturdayDeliveryServiceProvider",
     "dataProviders": [
         {
@@ -24,5 +40,16 @@
     ],
     "runOnBuild": [
         "SaturdayDelivery\\Migrations\\SaturydayDeliveryOrderPropertyMigration_0_0_1"
+    ],
+    "license": "",
+    "pluginIcon": "icon_plugin_xs.png",
+    "author": "Bureau Mario Kehl",
+    "authorIcon": "icon_author_xs.png",
+    "email": "bureau@mariokehl.com",
+    "phone": "+49 15678 360279",
+    "keywords": [
+        "plugin",
+        "integration",
+        "template"
     ]
 }

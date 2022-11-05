@@ -1,6 +1,6 @@
-# Release Notes for SaturdayDelivery
+# Release Notes for "Book Saturday delivery"
 
-## v0.0.1
+## v1.0.0 (2022-11-05)
 
 ### Added
-[Further information](https://developers.plentymarkets.com/marketplace/plugin-requirements#marketplace-changelog)
+- Initial release

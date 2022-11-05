@@ -35,6 +35,7 @@
       },
       success: function () {
         document.dispatchEvent(new CustomEvent('afterPaymentMethodChanged'))
+        document.dispatchEvent(new CustomEvent('afterSaturdayDeliverySelected'))
       }
     })
   },

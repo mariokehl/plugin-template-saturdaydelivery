@@ -10,6 +10,7 @@ use Plenty\Modules\Webshop\Contracts\SessionStorageRepositoryContract;
 use Plenty\Plugin\ConfigRepository;
 use Plenty\Plugin\Log\Loggable;
 use Plenty\Plugin\Templates\Twig;
+use SaturdayDelivery\Helpers\SubscriptionInfoHelper;
 use SaturdayDelivery\Session\SessionKey;
 
 /**
@@ -38,6 +39,12 @@ class SaturdayDeliveryDatePickerContainer
     {
         /** @var ConfigRepository $configRepo */
         $configRepo = pluginApp(ConfigRepository::class);
+
+        /** @var SubscriptionInfoHelper $subscription */
+        $subscription = pluginApp(SubscriptionInfoHelper::class);
+        if (!$subscription->isPaid()) {
+            return '';
+        }
 
         $lead = $configRepo->get('SaturdayDelivery.global.leadDays');
         $lead = intval($lead);
@@ -69,6 +76,7 @@ class SaturdayDeliveryDatePickerContainer
         $shippingProfilesAsString = $configRepo->get('SaturdayDelivery.global.shippingProfiles', '');
         if (strlen($shippingProfilesAsString)) {
             $shippingProfiles = explode(',', $shippingProfilesAsString);
+            $shippingProfiles = array_map(fn($num) => (int)$num, $shippingProfiles);
         }
 
         $hideContainer = false;

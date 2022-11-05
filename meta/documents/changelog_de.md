@@ -1,6 +1,6 @@
-# Release Notes für SaturdayDelivery
+# Versionshinweise für "Termin-/Samstagszustellung buchen"
 
-## v0.0.1
+## v1.0.0 (05.11.2022)
 
 ### Hinzugefügt
-[Weitere Informationen](https://developers.plentymarkets.com/marketplace/plugin-requirements#marketplace-changelog)
+- Erstveröffentlichung

@@ -3,6 +3,7 @@
 namespace SaturdayDelivery\Controllers;
 
 use Carbon\Carbon;
+use InvalidArgumentException;
 use Plenty\Modules\Basket\Contracts\BasketRepositoryContract;
 use Plenty\Modules\Basket\Events\Basket\AfterBasketChanged;
 use Plenty\Modules\Basket\Models\Basket;
@@ -35,13 +36,18 @@ class SaturdayDeliveryController extends Controller
         SessionStorageRepositoryContract $sessionRepo,
         ConfigRepository $configRepo
     ): string {
-        $selectedSaturday = $request->get('selectedSaturday', null);
+        $selectedSaturday = $request->get('selectedSaturday', '');
         $isActive = $request->get('active', false);
         $isActive = filter_var($isActive, FILTER_VALIDATE_BOOLEAN);
         $this->getLogger(__CLASS__)->debug('SaturdayDelivery::Debug.SaturdayDeliveryController_Request', ['selectedSaturday' => $selectedSaturday, 'isActive' => $isActive]);
 
         // Validation rules
-        if (!Carbon::createFromFormat('Y-m-d', $selectedSaturday)) {
+        try {
+            if (!Carbon::createFromFormat('Y-m-d', $selectedSaturday)) {
+                $selectedSaturday = null;
+            }
+        } catch (InvalidArgumentException $e) {
+            $this->getLogger(__CLASS__)->warning('SaturdayDelivery::Debug.SaturdayDeliveryController_Exception', ['InvalidArgumentException' => $e]);
             $selectedSaturday = null;
         }
         $possibleDates = $sessionRepo->getSessionValue(SessionKey::POSSIBLE_SELECTED_DATES, []);
