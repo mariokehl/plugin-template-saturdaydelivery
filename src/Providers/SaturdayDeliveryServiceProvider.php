@@ -11,6 +11,7 @@ use Plenty\Modules\Webshop\Contracts\SessionStorageRepositoryContract;
 use Plenty\Plugin\ServiceProvider;
 use Plenty\Plugin\Events\Dispatcher;
 use Plenty\Plugin\Log\Loggable;
+use SaturdayDelivery\Helpers\SubscriptionInfoHelper;
 use SaturdayDelivery\Models\SaturdayDeliveryOrderPropertyType;
 use SaturdayDelivery\Session\SessionKey;
 
@@ -79,9 +80,13 @@ class SaturdayDeliveryServiceProvider extends ServiceProvider
             $sessionRepo->setSessionValue(SessionKey::SELECTED_DATE, null);
         });
 
-        // JS
-        $eventDispatcher->listen('IO.Resources.Import', function (ResourceContainer $container) {
-            $container->addScriptTemplate('SaturdayDelivery::content.Containers.Template.Script');
-        }, self::PRIORITY);
+        /** @var SubscriptionInfoHelper $subscription */
+        $subscription = pluginApp(SubscriptionInfoHelper::class);
+        if ($subscription->isPaid()) {
+            // JS
+            $eventDispatcher->listen('IO.Resources.Import', function (ResourceContainer $container) {
+                $container->addScriptTemplate('SaturdayDelivery::content.Containers.Template.Script');
+            }, self::PRIORITY);
+        }
     }
 }

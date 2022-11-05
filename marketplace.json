@@ -1,0 +1,35 @@
+{
+    "marketplaceName": {
+        "de": "Termin-/Samstagszustellung buchen",
+        "en": "Book Saturday delivery"
+    },
+    "license": "",
+    "price": 333.20,
+    "shortDescription": {
+        "de": "Biete deinen Kund:innen die Möglichkeit der Wochenendzustellung (Sa) – rund um die Uhr",
+        "en": "Offer your customers the option of weekend delivery (Sat) - around the clock"
+    },
+    "categories": [
+        "4082"
+    ],
+    "keywords": [
+        "plugin",
+        "integration",
+        "template"
+    ],
+    "subscription": [
+        {
+            "interval": "monthly",
+            "price": 10.00
+        },
+        {
+            "interval": "quarterly",
+            "price": 24.00
+        },
+        {
+            "interval": "yearly",
+            "price": 60.00
+        }
+    ],
+    "offerTrial": true
+}
