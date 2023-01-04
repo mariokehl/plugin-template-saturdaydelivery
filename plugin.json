@@ -10,7 +10,7 @@
     "namespace": "SaturdayDelivery",
     "type": "integration",
     "version": "1.0.0",
-    "price": 333.20,
+    "price": 159.10,
     "description": "This plugin provides a container in the checkout for selecting a date for saturday delivery including a surcharge",
     "shortDescription": {
         "de": "Biete deinen Kund:innen die Möglichkeit der Wochenendzustellung (Sa) – rund um die Uhr",
