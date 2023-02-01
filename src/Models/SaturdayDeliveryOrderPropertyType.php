@@ -5,6 +5,7 @@ namespace SaturdayDelivery\Models;
 /**
  * Class SaturdayDeliveryOrderPropertyType
  * @package SaturdayDelivery\Models
+ * @deprecated since v1.0.0
  */
 class SaturdayDeliveryOrderPropertyType
 {
