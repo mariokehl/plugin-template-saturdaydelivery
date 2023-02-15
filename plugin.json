@@ -9,7 +9,7 @@
     ],
     "namespace": "SaturdayDelivery",
     "type": "integration",
-    "version": "1.0.1",
+    "version": "1.0.2-dev",
     "price": 115.43,
     "description": "This plugin provides a container in the checkout for selecting a date for saturday delivery including a surcharge",
     "shortDescription": {
