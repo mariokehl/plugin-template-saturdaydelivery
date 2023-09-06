@@ -3,6 +3,7 @@
 namespace SaturdayDelivery\Helpers;
 
 use Plenty\Modules\PlentyMarketplace\Contracts\SubscriptionInformationServiceContract;
+use Plenty\Modules\PlentyMarketplace\Models\SubscriptionOrderInformation;
 use Plenty\Plugin\Application;
 use Plenty\Plugin\Log\Loggable;
 
@@ -19,23 +20,33 @@ class SubscriptionInfoHelper
      */
     public function isPaid(): bool
     {
+        return true;
+    }
+
+    /**
+     * @return boolean
+     * @deprecated
+     */
+    public function isPaidDeprecated(): bool
+    {
         /** @var SubscriptionInformationServiceContract $subscriptionInfoService */
         $subscriptionInfoService = pluginApp(SubscriptionInformationServiceContract::class);
-        $this->getLogger(__METHOD__)->debug('SaturdayDelivery::Plenty.Subscription', [
-            'subscriptionInfo' => $subscriptionInfoService->getSubscriptionInfo('SaturdayDelivery')
-        ]);
+
+        /** @var SubscriptionOrderInformation $subscriptionInfo */
+        $subscriptionInfo = $subscriptionInfoService->getSubscriptionInfo('SaturdayDelivery');
+        $this->getLogger(__METHOD__)->debug('SaturdayDelivery::Debug.SubscriptionInfoHelper_Subscription', ['subscriptionInfo' => $subscriptionInfo]);
 
         // Exception for my development system
         $pid = $this->plentyID();
         if ($pid === 58289) {
-            $this->getLogger(__METHOD__)->info('SaturdayDelivery::Plenty.SubscriptionDev');
+            $this->getLogger(__METHOD__)->info('SaturdayDelivery::Debug.SubscriptionInfoHelper_SubscriptionDev');
             return true;
         }
 
         // Check if user has paid and show warning in log if he hasn't
         $isPaid = $subscriptionInfoService->isPaid('SaturdayDelivery');
         if (!$isPaid) {
-            $this->getLogger(__METHOD__)->warning('SaturdayDelivery::Plenty.Subscription', ['isPaid' => false]);
+            $this->getLogger(__METHOD__)->warning('SaturdayDelivery::Debug.SubscriptionInfoHelper_Subscription', ['isPaid' => false]);
         }
 
         return $isPaid;
